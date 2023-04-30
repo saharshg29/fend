@@ -4,9 +4,12 @@ import FloatInput from '../input'
 import Password from '../passInput'
 import { Link } from 'react-router-dom'
 import SSOLogin from '../SSO'
+import Forgot from "../Forgot"
 
 const SignIN = () => {
-    const { onOpen, onClose, isOpen } = useDisclosure()
+    const { isOpen: isEditOpen , onOpen: onEditOpen, onClose: onEditClose } = useDisclosure()
+    const { isOpen: isDeleteOpen , onOpen: onDeleteOpen, onClose: onDeleteClose } = useDisclosure()
+
     const [first, setfirst] = useState(false)
 
     return (
@@ -31,10 +34,11 @@ const SignIN = () => {
                         </Box>
                         <Spacer />
                         <Box >
-                            <Text size="xs"><b>Forget Password</b></Text>
+                            <Text size="xs" onClick={onDeleteOpen}><b>Forget Password</b></Text>
                         </Box>
                     </Flex>
-                    <SSOLogin show={first} close={onClose} open={isOpen} header="Login with SSO"/>
+                    <SSOLogin show={first} close={onEditClose} open={isEditOpen} header="Login with SSO"/>
+                    <Forgot show={first} close={onDeleteClose} open={isDeleteOpen} header="Reset Password"/>
 
                     <Button w="30vw" colorScheme='facebook'>Sign In</Button>
                     <Center pt={4} paddingBottom={4}>
@@ -43,7 +47,7 @@ const SignIN = () => {
                     <div onClick={() => {
                         setfirst(true)
                     }}>
-                    <Button w="30vw" colorScheme='facebook' onClick={onOpen}>Login with SSO </Button>
+                    <Button w="30vw" colorScheme='facebook' onClick={onEditOpen}>Login with SSO </Button>
 
                     </div>
                     <Center pt={4}>

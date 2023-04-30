@@ -3,6 +3,7 @@ import { GridItem, Grid, List, ListItem, Text, Flex, Box, Spacer } from "@chakra
 import { Route, Routes } from 'react-router-dom';
 import SignIN from './signin';
 import SignUP from './signup';
+import Reset from "./reset"
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Routes>
             <Route path='/signin' element={<SignIN />}></Route>
             <Route path='/signup' element={<SignUP />}></Route>
+            <Route path='/reset' element={<Reset />}></Route>
           </Routes>
         </GridItem>
 
